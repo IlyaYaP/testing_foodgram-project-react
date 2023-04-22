@@ -6,5 +6,6 @@ class TestRegistrationForm():
     def test_open_page(self, browser):
         page = LoginPage(browser, main_page_link)
         page.open()
-        page.login_user()
+        time.sleep(5)
+        page.register_new_user()
         time.sleep(5)
