@@ -8,8 +8,6 @@ import time
 @pytest.mark.registration_form_test(scope='class')
 class TestRegistrationForm():
 
-    # Проверка валидных и невалидных данных при регистрации пользователя
-
     @pytest.mark.registration_test(scope='function', autouse=True)
     def test_registration_form(self, browser):
         '''Тест регистрации нового пользователя'''
@@ -34,7 +32,7 @@ class TestRegistrationForm():
 @pytest.mark.login_form_test(scope='class')
 class TestLoginForm():
 
-    # Проверка валидных и невалидных данных при аутентификации пользователя,
+    # Проверка валидных и невалидных данных при аутентификации пользователя
     @pytest.mark.login_test(scope='function')
     def test_login_form(self, browser):
         '''Тест аутентификации нового пользователя'''
@@ -45,47 +43,37 @@ class TestLoginForm():
         page.should_be_create_recipe_button()
 
     def test_login_form_negative(self, browser):
-        '''Тест аутентификации нового пользователя'''
+        '''Тест аутентификации нового пользователя с невалидными данными'''
         page = LoginPage(browser, main_page_link)
         page.open()
         page.login_user(ValidDataForRegistration.invalid_data_login)
         page.is_alert_present()
         page.not_should_be_create_recipe_button()
 
-
     @pytest.mark.password_changes_test(scope='function')
     def test_password_changes(self, browser):
+        '''Тест изменения пароля'''
         page = LoginPage(browser, main_page_link)
         page.open()
-        time.sleep(5)
         page.login_user(ValidDataForRegistration.valid_data_login)
-        time.sleep(5)
         page.password_changes()
-        time.sleep(5)
-        # Меняем пароль обратно)
+        page.alert_handler()
+        page.should_be_create_recipe_button()
+        # Ниже, меняем пароль обратно)
         page.password_changes_back()
-        time.sleep(5)
 
-
-
-
-
-
-
-
-    # В данном тесте, воспроизводится сценарий при котором:
-    # 1.пользователь при аутентификации, указывает невалидные данные
-    # 2.сообщение об ошибке(алерт) не появляется
-    # 3.система принимает данные и авторизует пользователя
-
-@pytest.mark.parametrize('data', [pytest.param(ValidDataForRegistration.valid_data_login, marks=pytest.mark.xfail), 
-                                    ValidDataForRegistration.invalid_data_login]) 
-def test_forms(browser, data):
-    page = LoginPage(browser, main_page_link)
-    page.open()
-    page.login_user(data)
-    page.is_alert_present()
-    page.not_should_be_create_recipe_button()
+    @pytest.mark.negative_login_form(scope='function')
+    def test_negative_login_form(self, browser):
+        '''Тест формы входа в УЗ'''
+        # В данном тесте, воспроизводится сценарий при котором:
+        # 1.пользователь при аутентификации, указывает невалидные данные
+        # 2.сообщение об ошибке(алерт) не появляется
+        # 3.система принимает данные и авторизует пользователя
+        page = LoginPage(browser, main_page_link)
+        page.open()
+        page.login_user(ValidDataForRegistration.invalid_data_login)
+        page.is_alert_present()
+        page.not_should_be_create_recipe_button()
 
 
 

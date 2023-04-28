@@ -9,7 +9,7 @@ class LoginPage(BasePage):
     
   
     def registration_new_user_2(self, data):
-        '''функция регистрации нового пользователя'''
+        '''Функция регистрации нового пользователя'''
         self.go_to_registration_page()
         form_inputs = self.browser.find_elements(*LogRegLocators.REGISTRATION_FORM_INPUT)
         i = 0
@@ -20,11 +20,8 @@ class LoginPage(BasePage):
         registration_button.click()
 
 
-
-    
-
     def login_user(self, data):
-        '''функция входа зарегистрированого пользователя'''
+        '''Функция аутентификации зарегистрированого пользователя'''
         self.go_to_login_page()
         form_input = self.browser.find_elements(*LogRegLocators.LOGIN_FORM_INPUT)
         i = 0
@@ -35,8 +32,8 @@ class LoginPage(BasePage):
         login_button.click()
 
 
-
     def password_changes(self):
+        '''Функция изменения пароля зарегистрированого пользователя'''
         button_password_changes = self.browser.find_element(*LogRegLocators.BUTTON_PASSWORD_CHANGES)
         button_password_changes.click()
         current_password = self.browser.find_element(*LogRegLocators.CURRENT_PASSWORD)
@@ -49,6 +46,7 @@ class LoginPage(BasePage):
         button_password_changes_form.click()
 
     def password_changes_back(self):
+        '''Функция изменения пароля зарегистрированого пользователя'''
         button_password_changes = self.browser.find_element(*LogRegLocators.BUTTON_PASSWORD_CHANGES)
         button_password_changes.click()
         current_password = self.browser.find_element(*LogRegLocators.CURRENT_PASSWORD)
@@ -61,24 +59,20 @@ class LoginPage(BasePage):
         button_password_changes_form.click()
 
 
-
-
-
-
     def should_be_login_form(self):
-        '''проверка наличия формы входа'''
+        '''Проверка наличия формы входа'''
         assert self.is_element_present(*LogRegLocators.LOGIN_FORM), 'Login form is not presented'
 
     def not_should_be_login_form(self):
-        '''проверка наличия формы входа'''
-        assert self.is_not_element_present(*LogRegLocators.LOGIN_FORM), 'Login form is not presented'
+        '''Проверка отсутствия формы входа'''
+        assert self.is_not_element_present(*LogRegLocators.LOGIN_FORM), 'Login form is presented'
 
     def should_be_create_recipe_button(self):
-        '''проверка наличия кнопки "создать рецепт"'''
+        '''Проверка наличия кнопки "создать рецепт"'''
         assert self.is_element_present(*LogRegLocators.BUTTON_CREATE_RECIPE), 'The recipe creation button is not presented'
 
     def not_should_be_create_recipe_button(self):
-        '''проверка наличия кнопки "создать рецепт"'''
+        '''Проверка отсутствия кнопки "создать рецепт"'''
         assert self.is_not_element_present(*LogRegLocators.BUTTON_CREATE_RECIPE), 'The recipe creation button is presented'
 
 
