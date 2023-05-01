@@ -1,13 +1,10 @@
 
-from selenium.common.exceptions import NoSuchElementException, NoAlertPresentException, UnexpectedAlertPresentException
 from .base_page import BasePage
 from .locators import LogRegLocators
-from .data_for_registration import ValidDataForRegistration
-import pytest
+from .data import DataForRegistration
 
 class LoginPage(BasePage):
     
-  
     def registration_new_user_2(self, data):
         '''Функция регистрации нового пользователя'''
         self.go_to_registration_page()
@@ -18,7 +15,6 @@ class LoginPage(BasePage):
             i += 1
         registration_button = self.browser.find_element(*LogRegLocators.REGISTRATION_BUTTON)
         registration_button.click()
-
 
     def login_user(self, data):
         '''Функция аутентификации зарегистрированого пользователя'''
@@ -31,17 +27,16 @@ class LoginPage(BasePage):
         login_button = self.browser.find_element(*LogRegLocators.LOGIN_BUTTON)
         login_button.click()
 
-
     def password_changes(self):
         '''Функция изменения пароля зарегистрированого пользователя'''
         button_password_changes = self.browser.find_element(*LogRegLocators.BUTTON_PASSWORD_CHANGES)
         button_password_changes.click()
         current_password = self.browser.find_element(*LogRegLocators.CURRENT_PASSWORD)
-        current_password.send_keys(ValidDataForRegistration.PASSWORD)
+        current_password.send_keys(DataForRegistration.PASSWORD)
         new_password = self.browser.find_element(*LogRegLocators.NEW_PASSWORD)
-        new_password.send_keys(ValidDataForRegistration.NEW_PASSWORD)
+        new_password.send_keys(DataForRegistration.NEW_PASSWORD)
         repeat_password = self.browser.find_element(*LogRegLocators.REPEAT_PASSWORD)
-        repeat_password.send_keys(ValidDataForRegistration.REPEAT_PASSWORD)
+        repeat_password.send_keys(DataForRegistration.REPEAT_PASSWORD)
         button_password_changes_form = self.browser.find_element(*LogRegLocators.BUTTON_PASSWORD_CHANGES_FORM)
         button_password_changes_form.click()
 
@@ -50,11 +45,11 @@ class LoginPage(BasePage):
         button_password_changes = self.browser.find_element(*LogRegLocators.BUTTON_PASSWORD_CHANGES)
         button_password_changes.click()
         current_password = self.browser.find_element(*LogRegLocators.CURRENT_PASSWORD)
-        current_password.send_keys(ValidDataForRegistration.NEW_PASSWORD)
+        current_password.send_keys(DataForRegistration.NEW_PASSWORD)
         new_password = self.browser.find_element(*LogRegLocators.NEW_PASSWORD)
-        new_password.send_keys(ValidDataForRegistration.PASSWORD)
+        new_password.send_keys(DataForRegistration.PASSWORD)
         repeat_password = self.browser.find_element(*LogRegLocators.REPEAT_PASSWORD)
-        repeat_password.send_keys(ValidDataForRegistration.PASSWORD)
+        repeat_password.send_keys(DataForRegistration.PASSWORD)
         button_password_changes_form = self.browser.find_element(*LogRegLocators.BUTTON_PASSWORD_CHANGES_FORM)
         button_password_changes_form.click()
 

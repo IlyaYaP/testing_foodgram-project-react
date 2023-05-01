@@ -1,4 +1,4 @@
-class ValidDataForRegistration():
+class DataForRegistration():
     FIRST_NAME = 'Vasily'
     LAST_NAME = 'Ivanov'
     USER_NAME = 'Vasily_Ivanov'
@@ -19,4 +19,8 @@ class ValidDataForRegistration():
     # данные для изменения пароля
     valid_data_change_password = ['vasiliy12345', 'vasiliy54321', 'vasiliy54321']
     valid_data_change_password_back = ['vasiliy54321', 'vasiliy12345', 'vasiliy12345']
-    
+
+
+class DataRecipeCreate():
+    RECIPE_NAME = 'Ленивые хачапури с сыром на сковороде на кефире'
+    MEAL = 'Завтрак'
