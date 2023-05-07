@@ -29,8 +29,7 @@ class LoginPage(BasePage):
 
     def password_changes(self):
         '''Функция изменения пароля зарегистрированого пользователя'''
-        button_password_changes = self.browser.find_element(*LogRegLocators.BUTTON_PASSWORD_CHANGES)
-        button_password_changes.click()
+        self.go_to_change_password_page()
         current_password = self.browser.find_element(*LogRegLocators.CURRENT_PASSWORD)
         current_password.send_keys(DataForRegistration.PASSWORD)
         new_password = self.browser.find_element(*LogRegLocators.NEW_PASSWORD)
@@ -42,8 +41,7 @@ class LoginPage(BasePage):
 
     def password_changes_back(self):
         '''Функция изменения пароля зарегистрированого пользователя'''
-        button_password_changes = self.browser.find_element(*LogRegLocators.BUTTON_PASSWORD_CHANGES)
-        button_password_changes.click()
+        self.go_to_change_password_page()
         current_password = self.browser.find_element(*LogRegLocators.CURRENT_PASSWORD)
         current_password.send_keys(DataForRegistration.NEW_PASSWORD)
         new_password = self.browser.find_element(*LogRegLocators.NEW_PASSWORD)

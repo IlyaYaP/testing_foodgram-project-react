@@ -15,6 +15,5 @@ class TestRecipeCreate():
         page.login_user(DataForRegistration.valid_data_login)
         page_recipe_create = RecipeCreation(browser, browser.current_url)
         page_recipe_create.create_recipe()
-        time.sleep(5)
-        page_recipe_create.tags_selection(DataRecipeCreate.MEAL)
-        time.sleep(5)
+        page_recipe_create.go_to_recipes_page()
+        page_recipe_create.should_be_recipe_form()

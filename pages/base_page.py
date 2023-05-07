@@ -1,8 +1,9 @@
+import os
 from selenium.common.exceptions import NoSuchElementException, NoAlertPresentException, UnexpectedAlertPresentException
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.support.ui import WebDriverWait
-from .locators import LogRegLocators
+from .locators import LogRegLocators, CreateRecipeLocators, HeaderMenuButtons
 
 class BasePage():
     def __init__(self, browser, url, timeout = 2):
@@ -13,6 +14,35 @@ class BasePage():
     def open(self):
         '''функция осуществляет переход по указанному пути'''
         self.browser.get(self.url)
+
+    def go_to_recipes_page(self, timeout = 5):
+        link = self.browser.find_element(*HeaderMenuButtons.RECIPES)
+        WebDriverWait(self.browser, timeout).until(EC.element_to_be_clickable((HeaderMenuButtons.RECIPES)))
+        link.click()
+
+    def go_to_favorites_page(self):
+        link = self.browser.find_element(*HeaderMenuButtons.FAVORITES)
+        link.click()
+
+    def go_to_recipes_creat_page(self):
+        link = self.browser.find_element(*HeaderMenuButtons.RECIPES_CREATE)
+        link.click()
+
+    def go_to_subscriptions_page(self):
+        link = self.browser.find_element(*HeaderMenuButtons.SUBSCRIPTIONS)
+        link.click()
+
+    def go_to_shopping_list_page(self):
+        link = self.browser.find_element(*HeaderMenuButtons.SHOPPING_LIST)
+        link.click()
+
+    def go_to_change_password_page(self):
+        link = self.browser.find_element(*HeaderMenuButtons.CHANGE_PASSWORD)
+        link.click()
+
+    def go_to_exit(self):
+        link = self.browser.find_element(*HeaderMenuButtons.EXIT)
+        link.click()
 
     def go_to_login_page(self):
         '''Функция осуществляет переход на страницу входа'''
@@ -33,7 +63,7 @@ class BasePage():
         return True
     
     def is_not_element_present(self, how, what):
-        '''Проверка отсутствия отсутствия элемента на странице'''
+        '''Проверка отсутствия элемента на странице'''
         try:
             self.browser.find_element(how, what)
         except(NoSuchElementException):
@@ -60,6 +90,12 @@ class BasePage():
     def alert_handler(self):
         '''Функция передает текст алерта в сообщение об ошибке'''
         assert self.is_not_alert_present(), f'{self.browser.switch_to.alert.text}'
+
+    def add_image(self, image_name, element):
+        directory = 'C:/dev/testing_foodgram-project-react/pages/recipe_image/'
+        file_path = os.path.join(directory, image_name)
+        element.send_keys(file_path)
+
 
 
        

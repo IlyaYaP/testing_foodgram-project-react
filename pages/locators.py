@@ -1,4 +1,6 @@
 from selenium.webdriver.common.by import By
+from .data import DataForRegistration, DataRecipeCreate
+
 
 class LogRegLocators():
     # Локаторы кнопок для перехода к формам регистрации и входа в УЗ
@@ -31,9 +33,6 @@ class LogRegLocators():
     #BUTTON_CREATE_RECIPE = (By.CSS_SELECTOR, '[href="/recipes/create"]')
     BUTTON_CREATE_RECIPE = (By.LINK_TEXT, 'Создать рецепт')
 
-    # Локатор кнопки перехода к форме изменения пароля
-    BUTTON_PASSWORD_CHANGES = (By.LINK_TEXT, 'Изменить пароль')
-
     # Локаторы формы изменения пароля
     CURRENT_PASSWORD = (By.CSS_SELECTOR, '[name="current_password"]')
     NEW_PASSWORD = (By.CSS_SELECTOR, '[name="new_password"]')
@@ -43,11 +42,12 @@ class LogRegLocators():
 
 class CreateRecipeLocators():
     # Локаторы для создания рецепта
-    BUTTON_CREATE_RECIPE = (By.LINK_TEXT, 'Создать рецепт')
     RECIPE_NAME = (By.XPATH, '//div[text()="Название рецепта"]/../input')
+    RECIPE_TITLE = (By.LINK_TEXT, f'{DataRecipeCreate.RECIPE_NAME}')
+    RECIPE_FORM = (By.CSS_SELECTOR, '.styles_single-card__info__2_cny')
 
     TAG_NAME = (By.CSS_SELECTOR, 'div.styles_checkbox-container__1vy_E span')
-    TAG_BUTTON = (By.XPATH, f'//span[text()="Завтрак"]/../button')
+
 
     INGREDIENTS = (By.CSS_SELECTOR, '.styles_ingredientsInput__1zzql')
     AMOUNT_VALUE = (By.CSS_SELECTOR, '.styles_ingredientsAmountValue__2matT')
@@ -55,4 +55,18 @@ class CreateRecipeLocators():
     COOKING_TIME = (By.XPATH, '//div[text()="Время приготовления"]/../input')
     RECIPE_DESCRIPTION = (By.CSS_SELECTOR, '.styles_textareaField__1wfhC')
     ADD_FILE_BUTTON = (By.CSS_SELECTOR, '.styles_button__xzu5F')
+
+    FILE_INPUT = (By.CSS_SELECTOR, '[type = "file"]')
+
     BUTTON_CREATE_RECIPE_FORM = (By.XPATH, '//button[text()="Создать рецепт"]')
+    INGREDIENTS_DROP_LIST = (By.CSS_SELECTOR, '.styles_container__3ukwm div')
+
+
+class HeaderMenuButtons():
+    RECIPES = (By.XPATH, '//a[text()="Рецепты"]')
+    SUBSCRIPTIONS = (By.XPATH, '//a[text()="Мои подписки"]')
+    RECIPES_CREATE = (By.XPATH, '//a[text()="Создать рецепт"]')
+    FAVORITES = (By.XPATH, '//a[text()="Избранное"]')
+    SHOPPING_LIST = (By.XPATH, '//a[text()="Список покупок"]')
+    CHANGE_PASSWORD = (By.XPATH, '//a[text()="Изменить пароль"]')
+    EXIT = (By.XPATH, '//a[text()="Выход"]')
