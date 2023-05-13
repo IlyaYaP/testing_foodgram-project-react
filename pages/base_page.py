@@ -1,12 +1,13 @@
 import os
-from selenium.common.exceptions import NoSuchElementException, NoAlertPresentException, UnexpectedAlertPresentException
+from selenium.common.exceptions import NoSuchElementException, NoAlertPresentException, UnexpectedAlertPresentException, WebDriverException
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.support.ui import WebDriverWait
 from .locators import LogRegLocators, CreateRecipeLocators, HeaderMenuButtons
+import time
 
 class BasePage():
-    def __init__(self, browser, url, timeout = 2):
+    def __init__(self, browser, url, timeout = 5):
         self.browser = browser
         self.url = url
         self.browser.implicitly_wait(timeout)
@@ -15,10 +16,13 @@ class BasePage():
         '''функция осуществляет переход по указанному пути'''
         self.browser.get(self.url)
 
-    def go_to_recipes_page(self, timeout = 5):
-        link = self.browser.find_element(*HeaderMenuButtons.RECIPES)
-        WebDriverWait(self.browser, timeout).until(EC.element_to_be_clickable((HeaderMenuButtons.RECIPES)))
-        link.click()
+    def go_to_recipes_page(self):
+        self.browser.get('http://localhost/recipes')
+        
+
+        # WebDriverWait(self.browser, timeout).until(EC.element_to_be_clickable((HeaderMenuButtons.RECIPES))).click()
+
+
 
     def go_to_favorites_page(self):
         link = self.browser.find_element(*HeaderMenuButtons.FAVORITES)

@@ -1,5 +1,7 @@
 import pytest
 from selenium import webdriver
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.chrome.service import Service
 
 def pytest_addoption(parser):
     parser.addoption('--browser_name', action = 'store',
@@ -18,7 +20,7 @@ def browser(request):
         option_chrome.add_experimental_option('excludeSwitches', ['enable-logging'])
         option_chrome.add_experimental_option('prefs', 
                                                {'intl.accept_languages': user_language})
-        browser = webdriver.Chrome(options=option_chrome)
+        browser = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=option_chrome)
     elif browser_name == 'firefox':
         print('\nstart firefox browser for test..')
         option_firefox = webdriver.FirefoxOptions()

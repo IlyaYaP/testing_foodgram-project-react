@@ -1,7 +1,7 @@
 
 from .base_page import BasePage
 from .locators import LogRegLocators
-from .data import DataForRegistration
+from data.data_registration import DataForRegistration
 
 class LoginPage(BasePage):
     

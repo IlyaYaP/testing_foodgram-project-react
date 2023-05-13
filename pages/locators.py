@@ -1,5 +1,6 @@
 from selenium.webdriver.common.by import By
-from .data import DataForRegistration, DataRecipeCreate
+# from ..data.data_recipe_create import D
+# from ..data.data_registration import DataForRegistration
 
 
 class LogRegLocators():
@@ -42,8 +43,10 @@ class LogRegLocators():
 
 class CreateRecipeLocators():
     # Локаторы для создания рецепта
+    RECIPE_CREATE_INPUT = (By.CSS_SELECTOR, '[data_test="recipe_create"]')
+    
     RECIPE_NAME = (By.XPATH, '//div[text()="Название рецепта"]/../input')
-    RECIPE_TITLE = (By.LINK_TEXT, f'{DataRecipeCreate.RECIPE_NAME}')
+    # RECIPE_TITLE = (By.LINK_TEXT, f'{DataRecipeCreate.RECIPE_NAME}')
     RECIPE_FORM = (By.CSS_SELECTOR, '.styles_single-card__info__2_cny')
 
     TAG_NAME = (By.CSS_SELECTOR, 'div.styles_checkbox-container__1vy_E span')

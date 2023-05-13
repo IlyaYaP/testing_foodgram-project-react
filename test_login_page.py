@@ -1,6 +1,6 @@
 from pages.log_reg_page import LoginPage
 from pages.links import main_page_link
-from pages.data import DataForRegistration
+from data.data_registration import DataForRegistration
 import pytest
 import time
 
