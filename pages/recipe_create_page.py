@@ -1,14 +1,17 @@
 from .base_page import BasePage
 from .locators import CreateRecipeLocators
-# from ..data.data_recipe_create import DataRecipeCreate
 from selenium.webdriver.common.by import By
-import time
-import pytest
 
 
 class RecipeCreation(BasePage):
 
-    def create_recipe(self, recipe_name_data, cooking_time_data, recipe_description_data, meal_data, ingredients_data, image_name_data):
+    def create_recipe(self, 
+                      recipe_name_data, 
+                      cooking_time_data, 
+                      recipe_description_data, 
+                      meal_data, 
+                      ingredients_data, 
+                      image_name_data):
         '''Функция создания рецепта'''
         self.go_to_recipes_creat_page()
         recipe_name = self.browser.find_element(*CreateRecipeLocators.RECIPE_NAME)
@@ -23,23 +26,6 @@ class RecipeCreation(BasePage):
         self.add_image(image_name_data, add_file_button)
         button_create_recipe_form = self.browser.find_element(*CreateRecipeLocators.BUTTON_CREATE_RECIPE_FORM)
         button_create_recipe_form.click()
-
-    # def create_recipe_2(self, data, meal, ingredients, image_name):
-    #     '''Функция создания рецепта'''
-    #     self.go_to_recipes_creat_page()
-    #     recipe_create_input = self.browser.find_elements(*CreateRecipeLocators.RECIPE_CREATE_INPUT)
-    #     i = 0
-    #     while i < len(recipe_create_input):
-    #         recipe_create_input[i].send_keys(data[i])
-    #         i += 1
-
-    #     add_file_button = self.browser.find_element(*CreateRecipeLocators.FILE_INPUT)
-    #     self.tags_selection(meal)
-    #     self.add_ingredients(ingredients)
-    #     self.add_image(image_name, add_file_button)
-    #     button_create_recipe_form = self.browser.find_element(*CreateRecipeLocators.BUTTON_CREATE_RECIPE_FORM)
-    #     button_create_recipe_form.click()
-
 
 
     def tags_selection(self, meal):
@@ -69,7 +55,6 @@ class RecipeCreation(BasePage):
             ingredients_drop_list.click()
             ingredients_amount.send_keys(amount)
             button_add_ingredients.click()
-
 
     def should_be_recipe(self, recipe_name):
         '''Проверка наличия созданого рецепта'''

@@ -1,7 +1,7 @@
 
 from .base_page import BasePage
 from .locators import LogRegLocators
-from data.data_registration import DataForRegistration
+from data.data_registration import DataRegistrationAndLoginUser_1
 
 class LoginPage(BasePage):
     
@@ -31,11 +31,11 @@ class LoginPage(BasePage):
         '''Функция изменения пароля зарегистрированого пользователя'''
         self.go_to_change_password_page()
         current_password = self.browser.find_element(*LogRegLocators.CURRENT_PASSWORD)
-        current_password.send_keys(DataForRegistration.PASSWORD)
+        current_password.send_keys(DataRegistrationAndLoginUser_1.PASSWORD)
         new_password = self.browser.find_element(*LogRegLocators.NEW_PASSWORD)
-        new_password.send_keys(DataForRegistration.NEW_PASSWORD)
+        new_password.send_keys(DataRegistrationAndLoginUser_1.NEW_PASSWORD)
         repeat_password = self.browser.find_element(*LogRegLocators.REPEAT_PASSWORD)
-        repeat_password.send_keys(DataForRegistration.REPEAT_PASSWORD)
+        repeat_password.send_keys(DataRegistrationAndLoginUser_1.REPEAT_PASSWORD)
         button_password_changes_form = self.browser.find_element(*LogRegLocators.BUTTON_PASSWORD_CHANGES_FORM)
         button_password_changes_form.click()
 
@@ -43,11 +43,11 @@ class LoginPage(BasePage):
         '''Функция изменения пароля зарегистрированого пользователя'''
         self.go_to_change_password_page()
         current_password = self.browser.find_element(*LogRegLocators.CURRENT_PASSWORD)
-        current_password.send_keys(DataForRegistration.NEW_PASSWORD)
+        current_password.send_keys(DataRegistrationAndLoginUser_1.NEW_PASSWORD)
         new_password = self.browser.find_element(*LogRegLocators.NEW_PASSWORD)
-        new_password.send_keys(DataForRegistration.PASSWORD)
+        new_password.send_keys(DataRegistrationAndLoginUser_1.PASSWORD)
         repeat_password = self.browser.find_element(*LogRegLocators.REPEAT_PASSWORD)
-        repeat_password.send_keys(DataForRegistration.PASSWORD)
+        repeat_password.send_keys(DataRegistrationAndLoginUser_1.PASSWORD)
         button_password_changes_form = self.browser.find_element(*LogRegLocators.BUTTON_PASSWORD_CHANGES_FORM)
         button_password_changes_form.click()
 

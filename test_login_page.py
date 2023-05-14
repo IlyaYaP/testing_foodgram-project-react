@@ -1,25 +1,28 @@
 from pages.log_reg_page import LoginPage
 from pages.links import main_page_link
-from data.data_registration import DataForRegistration
+from data.data_registration import DataRegistrationAndLoginUser_1, DataRegistrationAndLoginUser_2
 import pytest
-import time
 
 
 @pytest.mark.registration_form_test(scope='class')
 class TestRegistrationForm():
 
     @pytest.mark.registration_test(scope='function', autouse=True)
-    def test_registration_form(self, browser):
+    @pytest.mark.parametrize('data', [DataRegistrationAndLoginUser_1.valid_data_registration, 
+                                      DataRegistrationAndLoginUser_2.valid_data_registration])
+
+
+    def test_registration_form(self, browser, data):
         '''Тест регистрации нового пользователя'''
         page = LoginPage(browser, main_page_link)
         page.open()
-        page.registration_new_user_2(DataForRegistration.valid_data)
+        page.registration_new_user_2(data)
         page.alert_handler()
         page.should_be_login_form()
 
     @pytest.mark.registration_negative_test(scope='function')
-    @pytest.mark.parametrize('data', [DataForRegistration.invalid_data_username_email,
-                                      DataForRegistration.invalid_data_pass])
+    @pytest.mark.parametrize('data', [DataRegistrationAndLoginUser_1.invalid_data_registration_username_email,
+                                      DataRegistrationAndLoginUser_1.invalid_data_registration_pass])
     def test_registration_form_negative(self, browser, data):
         '''Тест регистрации нового пользователя'''
         page = LoginPage(browser, main_page_link)

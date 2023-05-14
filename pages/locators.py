@@ -1,6 +1,5 @@
 from selenium.webdriver.common.by import By
-# from ..data.data_recipe_create import D
-# from ..data.data_registration import DataForRegistration
+from data.data_registration import DataRegistrationAndLoginUser_1
 
 
 class LogRegLocators():
@@ -66,6 +65,7 @@ class CreateRecipeLocators():
 
 
 class HeaderMenuButtons():
+    # Локаторы меню в хедаре
     RECIPES = (By.XPATH, '//a[text()="Рецепты"]')
     SUBSCRIPTIONS = (By.XPATH, '//a[text()="Мои подписки"]')
     RECIPES_CREATE = (By.XPATH, '//a[text()="Создать рецепт"]')
@@ -73,3 +73,9 @@ class HeaderMenuButtons():
     SHOPPING_LIST = (By.XPATH, '//a[text()="Список покупок"]')
     CHANGE_PASSWORD = (By.XPATH, '//a[text()="Изменить пароль"]')
     EXIT = (By.XPATH, '//a[text()="Выход"]')
+
+
+class SubscriptionsLocators():
+    AUTHOR = (By.LINK_TEXT, f'Vasily Ivanov')
+    SUBSCRIPTIONS_BUTTON = (By.CSS_SELECTOR, '.styles_buttonSubscribe__1C1fa')
+

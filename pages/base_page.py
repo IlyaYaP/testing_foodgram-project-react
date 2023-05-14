@@ -4,7 +4,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.support.ui import WebDriverWait
 from .locators import LogRegLocators, CreateRecipeLocators, HeaderMenuButtons
-import time
+
 
 class BasePage():
     def __init__(self, browser, url, timeout = 5):
@@ -18,9 +18,11 @@ class BasePage():
 
     def go_to_recipes_page(self):
         self.browser.get('http://localhost/recipes')
-        
 
-        # WebDriverWait(self.browser, timeout).until(EC.element_to_be_clickable((HeaderMenuButtons.RECIPES))).click()
+    def go_to_recipes_page_menu(self):
+        # WebDriverWait(self.browser, timeout=5).until(EC.element_to_be_clickable((HeaderMenuButtons.RECIPES))).click()
+        link = self.browser.find_element(*HeaderMenuButtons.RECIPES)
+        link.click()
 
 
 

@@ -3,9 +3,8 @@ from pages.log_reg_page import LoginPage
 from pages.links import main_page_link
 from pages.locators import CreateRecipeLocators
 from data.data_recipe_create import DataRecipeCreateBreakfast, DataRecipeCreateDinner, DataRecipeCreateLunch
-from data.data_registration import DataForRegistration
+from data.data_registration import DataRegistrationAndLoginUser_1
 import pytest
-import time
 
 class TestRecipeCreate():
     
@@ -28,9 +27,10 @@ class TestRecipeCreate():
                            meal_data, 
                            ingredients_data, 
                            image_name_data):
+        '''Тест создания рецепта'''
         page = LoginPage(browser, main_page_link)
         page.open()
-        page.login_user(DataForRegistration.valid_data_login)
+        page.login_user(DataRegistrationAndLoginUser_1.valid_data_login)
         page_recipe_create = RecipeCreation(browser, browser.current_url)
         page_recipe_create.create_recipe(recipe_name_data, 
                                          cooking_time_data, 
