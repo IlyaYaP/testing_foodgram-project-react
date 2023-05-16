@@ -79,3 +79,6 @@ class SubscriptionsLocators():
     AUTHOR = (By.LINK_TEXT, f'Vasily Ivanov')
     SUBSCRIPTIONS_BUTTON = (By.CSS_SELECTOR, '.styles_buttonSubscribe__1C1fa')
 
+    SUBSCRIBE_BUTTON = (By.XPATH, '//button[text()="Подписаться на автора"]')
+    # UNSUBSCRIBE_BUTTON = (By.XPATH, '//button[text()="Отписаться от автора"]')
+

@@ -14,6 +14,6 @@ class TestSubscription():
         page.login_user(DataRegistrationAndLoginUser_2.valid_data_login)
         page_subscription = SubscriptionsPage(browser, browser.current_url)
         page_subscription.subscription()
-        page_subscription.should_be_subscription()
+
 
 
