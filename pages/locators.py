@@ -1,5 +1,6 @@
 from selenium.webdriver.common.by import By
-from data.data_registration import DataRegistrationAndLoginUser_1
+from data.data_subscription import DataSubscription
+
 
 
 class LogRegLocators():
@@ -76,9 +77,14 @@ class HeaderMenuButtons():
 
 
 class SubscriptionsLocators():
-    AUTHOR = (By.LINK_TEXT, f'Vasily Ivanov')
+    AUTHOR = (By.LINK_TEXT, f'{DataSubscription.AUTHOR}')
+
+    AUTHOR_UNSUBSCRIBE = (By.XPATH, f'//a[text()="{DataSubscription.AUTHOR}"]//following::button[text()="Отписаться"]')
+
     SUBSCRIPTIONS_BUTTON = (By.CSS_SELECTOR, '.styles_buttonSubscribe__1C1fa')
 
     SUBSCRIBE_BUTTON = (By.XPATH, '//button[text()="Подписаться на автора"]')
     # UNSUBSCRIBE_BUTTON = (By.XPATH, '//button[text()="Отписаться от автора"]')
+
+    UNSUBSCRIBE_BUTTON = (By.CSS_SELECTOR, '.styles_subscriptionButton__WtOm-')
 

@@ -1,10 +1,11 @@
 from .base_page import BasePage
 from .locators import SubscriptionsLocators
-from data.data_registration import DataRegistrationAndLoginUser_1
+from data.data_subscription import DataSubscription
 import time
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
+from selenium.common.exceptions import NoSuchElementException
 
 class SubscriptionsPage(BasePage):
     def subscription(self):
@@ -23,7 +24,17 @@ class SubscriptionsPage(BasePage):
             self.go_to_subscriptions_page()
             self.should_be_subscription()
 
-        # Далее в отдельной функции напишем тест отписки и проверим, что элемент отсутствует
+    def unsubscribe(self):
+        self.go_to_subscriptions_page()
+        try:
+            # WebDriverWait(self.browser, timeout=1).until(EC.presence_of_element_located((SubscriptionsLocators.AUTHOR)))
+            unsubscribe_button = self.browser.find_element(*SubscriptionsLocators.UNSUBSCRIBE_BUTTON)
+            time.sleep(3)
+            unsubscribe_button.click()
+            time.sleep(3)
+            self.not_should_be_subscription()
+        except NoSuchElementException:
+            print(f'-----------You are not subscribed to this author!')
 
 
     def should_be_subscription(self):

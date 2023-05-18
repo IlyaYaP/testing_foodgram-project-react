@@ -41,7 +41,7 @@ class TestLoginForm():
         '''Тест аутентификации нового пользователя'''
         page = LoginPage(browser, main_page_link)
         page.open()
-        page.login_user(DataForRegistration.valid_data_login)
+        page.login_user(DataRegistrationAndLoginUser_1.valid_data_login)
         page.alert_handler()
         page.should_be_create_recipe_button()
 
@@ -49,7 +49,7 @@ class TestLoginForm():
         '''Тест аутентификации нового пользователя с невалидными данными'''
         page = LoginPage(browser, main_page_link)
         page.open()
-        page.login_user(DataForRegistration.invalid_data_login)
+        page.login_user(DataRegistrationAndLoginUser_1.invalid_data_login)
         page.is_alert_present()
         page.not_should_be_create_recipe_button()
 
@@ -58,7 +58,7 @@ class TestLoginForm():
         '''Тест изменения пароля'''
         page = LoginPage(browser, main_page_link)
         page.open()
-        page.login_user(DataForRegistration.valid_data_login)
+        page.login_user(DataRegistrationAndLoginUser_1.valid_data_login)
         page.password_changes()
         page.alert_handler()
         page.should_be_create_recipe_button()
@@ -74,7 +74,7 @@ class TestLoginForm():
         # 3.система принимает данные и авторизует пользователя
         page = LoginPage(browser, main_page_link)
         page.open()
-        page.login_user(DataForRegistration.invalid_data_login)
+        page.login_user(DataRegistrationAndLoginUser_1.invalid_data_login)
         page.is_alert_present()
         page.not_should_be_create_recipe_button()
 
