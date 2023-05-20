@@ -4,7 +4,7 @@ from selenium.webdriver.common.by import By
 
 
 class RecipeCreation(BasePage):
-
+    
     def create_recipe(self, 
                       recipe_name_data, 
                       cooking_time_data, 

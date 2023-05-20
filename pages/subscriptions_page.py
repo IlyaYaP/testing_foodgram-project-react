@@ -1,7 +1,5 @@
 from .base_page import BasePage
 from .locators import SubscriptionsLocators
-from data.data_subscription import DataSubscription
-import time
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
@@ -10,7 +8,6 @@ from selenium.common.exceptions import NoSuchElementException
 class SubscriptionsPage(BasePage):
     def subscription(self):
         '''Функция подписки на автора'''
-
         author_name = self.browser.find_element(*SubscriptionsLocators.AUTHOR)
         author_name.click()
         button_sub = self.browser.find_element(*SubscriptionsLocators.SUBSCRIPTIONS_BUTTON)
@@ -25,14 +22,12 @@ class SubscriptionsPage(BasePage):
             self.should_be_subscription()
 
     def unsubscribe(self):
+        '''Функция отписки от автора'''
         self.go_to_subscriptions_page()
         try:
-            # WebDriverWait(self.browser, timeout=1).until(EC.presence_of_element_located((SubscriptionsLocators.AUTHOR)))
             unsubscribe_button = self.browser.find_element(*SubscriptionsLocators.UNSUBSCRIBE_BUTTON)
-            time.sleep(3)
             unsubscribe_button.click()
-            time.sleep(3)
-            self.not_should_be_subscription()
+            self.is_disappeared()
         except NoSuchElementException:
             print(f'-----------You are not subscribed to this author!')
 
@@ -42,5 +37,10 @@ class SubscriptionsPage(BasePage):
         assert self.is_element_present(*SubscriptionsLocators.AUTHOR), 'The subscription is not presented'
 
     def not_should_be_subscription(self):
+        '''Проверка отсутствия подиски'''
         assert self.is_not_element_present(*SubscriptionsLocators.AUTHOR), 'The subscription is presented'
+
+    def is_disappeared(self):
+        '''Проверка что рецепты подписки исчезли'''
+        assert self.is_disappeared(*SubscriptionsLocators.AUTHOR_UNSUBSCRIBE)
 

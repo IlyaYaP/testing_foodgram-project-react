@@ -29,6 +29,7 @@ class DataRecipeCreateBreakfast():
                             INGREDIENTS, 
                             IMAGE_NAME]
 
+
 class DataRecipeCreateLunch():
     RECIPE_NAME = 'Говядина с болгарским перцем'
     MEAL =  'Обед'
@@ -56,6 +57,7 @@ class DataRecipeCreateLunch():
                          MEAL,
                          INGREDIENTS,
                          IMAGE_NAME]
+
 
 class DataRecipeCreateDinner():
     RECIPE_NAME = 'Сало в соевом соусе вареное'

@@ -1,9 +1,9 @@
 import os
-from selenium.common.exceptions import NoSuchElementException, NoAlertPresentException, UnexpectedAlertPresentException, WebDriverException
+from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.support.ui import WebDriverWait
-from .locators import LogRegLocators, CreateRecipeLocators, HeaderMenuButtons
+from .locators import LogRegLocators,  HeaderMenuButtons
 
 
 class BasePage():
@@ -17,36 +17,41 @@ class BasePage():
         self.browser.get(self.url)
 
     def go_to_recipes_page(self):
+        '''Функция перехода к странице с рецептами'''
         self.browser.get('http://localhost/recipes')
 
     def go_to_recipes_page_menu(self):
-        # WebDriverWait(self.browser, timeout=5).until(EC.element_to_be_clickable((HeaderMenuButtons.RECIPES))).click()
+        '''Функция перехода к странице с рецептами из меню в хедаре'''
         link = self.browser.find_element(*HeaderMenuButtons.RECIPES)
         link.click()
 
-
-
     def go_to_favorites_page(self):
+        '''Функция перехода к странице с избронным из меню в хедаре'''
         link = self.browser.find_element(*HeaderMenuButtons.FAVORITES)
         link.click()
 
     def go_to_recipes_creat_page(self):
+        '''Функция перехода к странице создания рецепта из меню в хедаре'''
         link = self.browser.find_element(*HeaderMenuButtons.RECIPES_CREATE)
         link.click()
 
     def go_to_subscriptions_page(self):
+        '''Функция перехода к странице с подписками из меню в хедаре'''
         link = self.browser.find_element(*HeaderMenuButtons.SUBSCRIPTIONS)
         link.click()
 
     def go_to_shopping_list_page(self):
+        '''Функция перехода к странице списка покупок из меню в хедаре'''
         link = self.browser.find_element(*HeaderMenuButtons.SHOPPING_LIST)
         link.click()
 
     def go_to_change_password_page(self):
+        '''Функция перехода к странице изменения пароля из меню в хедаре'''
         link = self.browser.find_element(*HeaderMenuButtons.CHANGE_PASSWORD)
         link.click()
 
     def go_to_exit(self):
+        '''Функция выхода из уч.записи из меню в хедаре'''
         link = self.browser.find_element(*HeaderMenuButtons.EXIT)
         link.click()
 
@@ -98,10 +103,18 @@ class BasePage():
         assert self.is_not_alert_present(), f'{self.browser.switch_to.alert.text}'
 
     def add_image(self, image_name, element):
+        '''Функция добавления фотографии'''
         directory = 'C:/dev/testing_foodgram-project-react/pages/recipe_image/'
         file_path = os.path.join(directory, image_name)
         element.send_keys(file_path)
 
+    def is_disappeared(self, how, what, timeout=2):
+        '''Функция ожидает, пока элемент не исчезнет'''
+        try:
+            WebDriverWait(self.browser, timeout, 0.05, TimeoutException).until_not(EC.presence_of_all_elements_located((how, what)))
+        except TimeoutException:
+            return False
+        return True
 
 
        

@@ -1,5 +1,7 @@
 from selenium.webdriver.common.by import By
 from data.data_subscription import DataSubscription
+from data.data_favourites import DataFavouries
+
 
 
 
@@ -44,11 +46,8 @@ class LogRegLocators():
 class CreateRecipeLocators():
     # Локаторы для создания рецепта
     RECIPE_CREATE_INPUT = (By.CSS_SELECTOR, '[data_test="recipe_create"]')
-    
     RECIPE_NAME = (By.XPATH, '//div[text()="Название рецепта"]/../input')
-    # RECIPE_TITLE = (By.LINK_TEXT, f'{DataRecipeCreate.RECIPE_NAME}')
     RECIPE_FORM = (By.CSS_SELECTOR, '.styles_single-card__info__2_cny')
-
     TAG_NAME = (By.CSS_SELECTOR, 'div.styles_checkbox-container__1vy_E span')
 
 
@@ -58,9 +57,7 @@ class CreateRecipeLocators():
     COOKING_TIME = (By.XPATH, '//div[text()="Время приготовления"]/../input')
     RECIPE_DESCRIPTION = (By.CSS_SELECTOR, '.styles_textareaField__1wfhC')
     ADD_FILE_BUTTON = (By.CSS_SELECTOR, '.styles_button__xzu5F')
-
     FILE_INPUT = (By.CSS_SELECTOR, '[type = "file"]')
-
     BUTTON_CREATE_RECIPE_FORM = (By.XPATH, '//button[text()="Создать рецепт"]')
     INGREDIENTS_DROP_LIST = (By.CSS_SELECTOR, '.styles_container__3ukwm div')
 
@@ -77,14 +74,20 @@ class HeaderMenuButtons():
 
 
 class SubscriptionsLocators():
+    # Локаторы для  осуществления подписки
     AUTHOR = (By.LINK_TEXT, f'{DataSubscription.AUTHOR}')
-
     AUTHOR_UNSUBSCRIBE = (By.XPATH, f'//a[text()="{DataSubscription.AUTHOR}"]//following::button[text()="Отписаться"]')
-
     SUBSCRIPTIONS_BUTTON = (By.CSS_SELECTOR, '.styles_buttonSubscribe__1C1fa')
-
     SUBSCRIBE_BUTTON = (By.XPATH, '//button[text()="Подписаться на автора"]')
-    # UNSUBSCRIBE_BUTTON = (By.XPATH, '//button[text()="Отписаться от автора"]')
-
     UNSUBSCRIBE_BUTTON = (By.CSS_SELECTOR, '.styles_subscriptionButton__WtOm-')
+
+
+class TagFilter():
+    # Локаторы для  осуществления фильтрации по тегу
+    TAB_BUTTONS = (By.CSS_SELECTOR, '.styles_checkbox__1WBUC')
+
+class FavouritesLocators():
+    FAVOURITE_BUTTON = (By.XPATH, f'//a[text()="{DataFavouries.RECIPE_NAME}"]//following::button[2]')
+
+
 

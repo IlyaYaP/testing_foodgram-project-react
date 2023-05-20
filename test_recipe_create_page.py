@@ -6,6 +6,7 @@ from data.data_recipe_create import DataRecipeCreateBreakfast, DataRecipeCreateD
 from data.data_registration import DataRegistrationAndLoginUser_1
 import pytest
 
+@pytest.mark.recipe_create_test(scope='function')
 class TestRecipeCreate():
     
     @pytest.mark.recipe_create

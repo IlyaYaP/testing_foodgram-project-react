@@ -3,8 +3,9 @@ from pages.subscriptions_page import SubscriptionsPage
 from pages.links import main_page_link
 from data.data_registration import DataRegistrationAndLoginUser_2
 import pytest
-import time
 
+
+@pytest.mark.subscribe_test(scope='class')
 class TestSubscription():
     
     @pytest.mark.subscription_test
