@@ -88,6 +88,7 @@ class TagFilter():
 
 class FavouritesLocators():
     FAVOURITE_BUTTON = (By.XPATH, f'//a[text()="{DataFavouries.RECIPE_NAME}"]//following::button[2]')
+    FAVOURITE_NAME = (By.XPATH, f'//a[text()="{DataFavouries.RECIPE_NAME}"]')
 
 
 
