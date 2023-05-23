@@ -1,6 +1,7 @@
 from selenium.webdriver.common.by import By
 from data.data_subscription import DataSubscription
 from data.data_favourites import DataFavouries
+from data.data_shopping_cart import DataShoppingCart
 
 
 
@@ -89,6 +90,11 @@ class TagFilter():
 class FavouritesLocators():
     FAVOURITE_BUTTON = (By.XPATH, f'//a[text()="{DataFavouries.RECIPE_NAME}"]//following::button[2]')
     FAVOURITE_NAME = (By.XPATH, f'//a[text()="{DataFavouries.RECIPE_NAME}"]')
+
+class ShoppingCartLocators():
+    ADD_SHOPPING_CART_BUTTON = (By.XPATH, f'//a[text()="{DataShoppingCart.RECIPE_NAME}"]//following::button[1]')
+    RECIPE_NAME = (By.XPATH, f'//a[text()="{DataShoppingCart.RECIPE_NAME}"]')
+
 
 
 

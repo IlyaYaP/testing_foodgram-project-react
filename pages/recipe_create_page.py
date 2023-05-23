@@ -1,6 +1,8 @@
 from .base_page import BasePage
 from .locators import CreateRecipeLocators
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 
 class RecipeCreation(BasePage):
@@ -24,7 +26,8 @@ class RecipeCreation(BasePage):
         self.tags_selection(meal_data)
         self.add_ingredients(ingredients_data)
         self.add_image(image_name_data, add_file_button)
-        button_create_recipe_form = self.browser.find_element(*CreateRecipeLocators.BUTTON_CREATE_RECIPE_FORM)
+        # button_create_recipe_form = self.browser.find_element(*CreateRecipeLocators.BUTTON_CREATE_RECIPE_FORM)
+        button_create_recipe_form = WebDriverWait(self.browser, timeout=1).until(EC.element_to_be_clickable((By.XPATH, '//button[text()="Создать рецепт"]')))
         button_create_recipe_form.click()
 
 

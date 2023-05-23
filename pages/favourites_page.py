@@ -17,7 +17,7 @@ class FavouritesPage(BasePage):
         favourites_button = self.browser.find_element(*favourites_button_locator)
         favourites_button.click()
         self.go_to_favorites_page()
-        self.should_be_favorites(data)
+        # self.should_be_favorites(data)
 
         # Далее реализуем проверку что на странице избранного, появились рецепты + функцию, которая почистит избранное, дабы не засорять тесты.
 
@@ -27,7 +27,7 @@ class FavouritesPage(BasePage):
         favourites_button = self.browser.find_element(*favourites_button_locator)
         favourites_button.click()
         self.browser.refresh()
-        self.not_should_be_favorites(data)
+        # self.not_should_be_favorites(data)
 
 
 

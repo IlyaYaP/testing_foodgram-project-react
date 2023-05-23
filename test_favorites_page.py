@@ -16,6 +16,7 @@ class TestFavourites():
         page.login_user(DataRegistrationAndLoginUser_2.valid_data_login)
         page_favourites = FavouritesPage(browser, browser.current_url)
         page_favourites.add_favorites(data)
+        page_favourites.should_be_favorites(data)
 
 
     @pytest.mark.parametrize('data', DataFavouries.RECIPE_NAME)
@@ -25,3 +26,4 @@ class TestFavourites():
         page.login_user(DataRegistrationAndLoginUser_2.valid_data_login)
         page_favourites = FavouritesPage(browser, browser.current_url)
         page_favourites.delete_favotites(data)
+        page_favourites.not_should_be_favorites(data)

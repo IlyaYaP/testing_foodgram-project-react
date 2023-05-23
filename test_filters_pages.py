@@ -1,6 +1,12 @@
 from pages.filters_pages import FiltersPage
+from pages.log_reg_page import LoginPage
+from data.data_registration import DataRegistrationAndLoginUser_2
+from data.data_favourites import DataFavouries
+from data.data_filters_pages import DataFiltersPages
+from pages.favourites_page import FavouritesPage
 from pages.links import main_page_link
 import pytest
+import time
 
 
 @pytest.mark.filters_tags(scope='class')
@@ -12,3 +18,4 @@ class TestFiltersTags():
         page = FiltersPage(browser, main_page_link)
         page.open()
         page.tags_filter(data)
+        time.sleep(2)
