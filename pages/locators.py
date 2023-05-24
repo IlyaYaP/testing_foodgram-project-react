@@ -94,7 +94,5 @@ class FavouritesLocators():
 class ShoppingCartLocators():
     ADD_SHOPPING_CART_BUTTON = (By.XPATH, f'//a[text()="{DataShoppingCart.RECIPE_NAME}"]//following::button[1]')
     RECIPE_NAME = (By.XPATH, f'//a[text()="{DataShoppingCart.RECIPE_NAME}"]')
-
-
-
-
+    DOWNLOAD_LIST_BUTTON = (By.XPATH, '//button[text()="Скачать список"]')
+    REMOVE_RECIPE_BUTTON = (By.LINK_TEXT, 'Удалить')
