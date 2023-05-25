@@ -56,7 +56,7 @@ class RecipeCreation(BasePage):
         for ingredien, amount in ingredients.items():
             try:
                 input_ingredients.send_keys(ingredien)
-                ingredients_drop_list = WebDriverWait(self.browser, timeout=2).until(EC.presence_of_element_located((CreateRecipeLocators.INGREDIENTS_DROP_LIST)))
+                ingredients_drop_list = WebDriverWait(self.browser, timeout=2).until(EC.presence_of_element_located((By.XPATH, f'//div[text()="{ingredien}"]')))
                 # ingredients_drop_list = self.browser.find_element(*CreateRecipeLocators.INGREDIENTS_DROP_LIST)
                 ingredients_drop_list.click()
                 ingredients_amount.send_keys(amount)
