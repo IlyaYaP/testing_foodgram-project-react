@@ -5,6 +5,7 @@ from data.data_registration import DataRegistrationAndLoginUser_2
 import pytest
 
 
+@pytest.mark.run(order=4)
 @pytest.mark.subscribe_test(scope='class')
 class TestSubscription():
     

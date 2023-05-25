@@ -3,7 +3,7 @@ from pages.links import main_page_link
 from data.data_registration import DataRegistrationAndLoginUser_1, DataRegistrationAndLoginUser_2
 import pytest
 
-
+@pytest.mark.run(order=1)
 @pytest.mark.registration_form_test(scope='class')
 class TestRegistrationForm():
 
@@ -32,6 +32,7 @@ class TestRegistrationForm():
         page.not_should_be_login_form()
 
 
+@pytest.mark.run(order=2)
 @pytest.mark.login_form_test(scope='class')
 class TestLoginForm():
 

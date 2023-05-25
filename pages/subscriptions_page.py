@@ -27,7 +27,7 @@ class SubscriptionsPage(BasePage):
         try:
             unsubscribe_button = self.browser.find_element(*SubscriptionsLocators.UNSUBSCRIBE_BUTTON)
             unsubscribe_button.click()
-            self.is_disappeared()
+            self.is_disappeared_subscribe()
         except NoSuchElementException:
             print(f'-----------You are not subscribed to this author!')
 
@@ -40,7 +40,7 @@ class SubscriptionsPage(BasePage):
         '''Проверка отсутствия подиски'''
         assert self.is_not_element_present(*SubscriptionsLocators.AUTHOR), 'The subscription is presented'
 
-    def is_disappeared(self):
+    def is_disappeared_subscribe(self):
         '''Проверка что рецепты подписки исчезли'''
         assert self.is_disappeared(*SubscriptionsLocators.AUTHOR_UNSUBSCRIBE)
 

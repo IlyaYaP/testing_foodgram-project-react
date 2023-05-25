@@ -6,6 +6,7 @@ from data.data_shopping_cart import DataShoppingCart
 import pytest
 
 
+@pytest.mark.run(order=7)
 @pytest.mark.shopping_cart_test(scope='class')
 class TestShoppingCart():
     

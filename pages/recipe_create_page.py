@@ -3,6 +3,7 @@ from .locators import CreateRecipeLocators
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.common.exceptions import StaleElementReferenceException
 
 
 class RecipeCreation(BasePage):
@@ -53,11 +54,19 @@ class RecipeCreation(BasePage):
         button_add_ingredients = self.browser.find_element(*CreateRecipeLocators.ADD_INDREDIENT_BUTTON)
         
         for ingredien, amount in ingredients.items():
-            input_ingredients.send_keys(ingredien)
-            ingredients_drop_list = self.browser.find_element(*CreateRecipeLocators.INGREDIENTS_DROP_LIST)
-            ingredients_drop_list.click()
-            ingredients_amount.send_keys(amount)
-            button_add_ingredients.click()
+            try:
+                input_ingredients.send_keys(ingredien)
+                ingredients_drop_list = WebDriverWait(self.browser, timeout=2).until(EC.presence_of_element_located((CreateRecipeLocators.INGREDIENTS_DROP_LIST)))
+                # ingredients_drop_list = self.browser.find_element(*CreateRecipeLocators.INGREDIENTS_DROP_LIST)
+                ingredients_drop_list.click()
+                ingredients_amount.send_keys(amount)
+                button_add_ingredients.click()
+            except StaleElementReferenceException:
+                    continue
+            else:
+                break
+        
+            
 
     def should_be_recipe(self, recipe_name):
         '''Проверка наличия созданого рецепта'''

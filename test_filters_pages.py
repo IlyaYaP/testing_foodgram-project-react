@@ -9,6 +9,7 @@ import pytest
 import time
 
 
+@pytest.mark.run(order=6)
 @pytest.mark.filters_tags(scope='class')
 class TestFiltersTags():
 

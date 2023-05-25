@@ -6,6 +6,8 @@ from pages.links import main_page_link
 import pytest
 import time
 
+
+@pytest.mark.run(order=5)
 @pytest.mark.favourites_test(scope='class')
 class TestFavourites():
 
