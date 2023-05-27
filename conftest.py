@@ -33,4 +33,6 @@ def browser(request):
     print("\nquit browser..")
     browser.quit()
 
+def pytest_make_parametrize_id(config, val): return repr(val)
+
 

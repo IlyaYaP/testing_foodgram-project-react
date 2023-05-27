@@ -4,14 +4,17 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.support.ui import WebDriverWait
 from .locators import LogRegLocators,  HeaderMenuButtons
+import allure
+from allure_commons.types import AttachmentType
 
 
 class BasePage():
-    def __init__(self, browser, url, timeout = 5):
+    def __init__(self, browser, url, timeout = 1):
         self.browser = browser
         self.url = url
         self.browser.implicitly_wait(timeout)
-
+    
+    @allure.feature('Open pages')
     def open(self):
         '''функция осуществляет переход по указанному пути'''
         self.browser.get(self.url)

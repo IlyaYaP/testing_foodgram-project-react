@@ -2,6 +2,8 @@ from pages.log_reg_page import LoginPage
 from pages.links import main_page_link
 from data.data_registration import DataRegistrationAndLoginUser_1, DataRegistrationAndLoginUser_2
 import pytest
+import allure
+from allure_commons.types import AttachmentType
 
 @pytest.mark.run(order=1)
 @pytest.mark.registration_form_test(scope='class')
