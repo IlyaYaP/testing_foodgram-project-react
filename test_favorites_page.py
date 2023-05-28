@@ -11,8 +11,8 @@ from allure_commons.types import AttachmentType
 
 @pytest.mark.run(order=5)
 @pytest.mark.favourites_test(scope='class')
+@allure.feature('Тесты добавления рецептов в избранное.')
 class TestFavourites():
-    
     @allure.story('Тест добавления рецептов в избранное')
     @pytest.mark.parametrize('data', DataFavouries.RECIPE_NAME)
     def test_favourites(self, browser, data):

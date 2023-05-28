@@ -13,60 +13,70 @@ class BasePage():
         self.browser = browser
         self.url = url
         self.browser.implicitly_wait(timeout)
-    
-    @allure.feature('Open pages')
+
     def open(self):
-        '''функция осуществляет переход по указанному пути'''
-        self.browser.get(self.url)
+        '''Функция перехода к указанному адресу.'''
+        with allure.step('Открываем страницу'):
+            self.browser.get(self.url)
 
     def go_to_recipes_page(self):
         '''Функция перехода к странице с рецептами'''
-        self.browser.get('http://localhost/recipes')
+        with allure.step('Переходим на страницу с рецептами.'):
+            self.browser.get('http://localhost/recipes')
 
     def go_to_recipes_page_menu(self):
         '''Функция перехода к странице с рецептами из меню в хедаре'''
-        link = self.browser.find_element(*HeaderMenuButtons.RECIPES)
-        link.click()
+        with allure.step('Переходим на страницу с рецептами, щелкая по кнопке из меню в хедаре.'):
+            link = self.browser.find_element(*HeaderMenuButtons.RECIPES)
+            link.click()
 
     def go_to_favorites_page(self):
         '''Функция перехода к странице с избронным из меню в хедаре'''
-        link = self.browser.find_element(*HeaderMenuButtons.FAVORITES)
-        link.click()
+        with allure.step('Переходим на страницу с избранными рецептами, щелкая по кнопке из меню в хедаре.'):
+            link = self.browser.find_element(*HeaderMenuButtons.FAVORITES)
+            link.click()
 
     def go_to_recipes_creat_page(self):
         '''Функция перехода к странице создания рецепта из меню в хедаре'''
-        link = self.browser.find_element(*HeaderMenuButtons.RECIPES_CREATE)
-        link.click()
+        with allure.step('Переходим на страницу создания рецепта, щелкая по кнопке из меню в хедаре.'):
+            link = self.browser.find_element(*HeaderMenuButtons.RECIPES_CREATE)
+            link.click()
 
     def go_to_subscriptions_page(self):
         '''Функция перехода к странице с подписками из меню в хедаре'''
-        link = self.browser.find_element(*HeaderMenuButtons.SUBSCRIPTIONS)
-        link.click()
+        with allure.step('Переходим на страницу с подписками, щелкая по кнопке из меню в хедаре.'):
+            link = self.browser.find_element(*HeaderMenuButtons.SUBSCRIPTIONS)
+            link.click()
 
     def go_to_shopping_list_page(self):
         '''Функция перехода к странице списка покупок из меню в хедаре'''
-        link = self.browser.find_element(*HeaderMenuButtons.SHOPPING_LIST)
-        link.click()
+        with allure.step('Переходим на страницу со списком покупок, щелкая по кнопке из меню в хедаре.'):
+            link = self.browser.find_element(*HeaderMenuButtons.SHOPPING_LIST)
+            link.click()
 
     def go_to_change_password_page(self):
         '''Функция перехода к странице изменения пароля из меню в хедаре'''
-        link = self.browser.find_element(*HeaderMenuButtons.CHANGE_PASSWORD)
-        link.click()
+        with allure.step('Переходим на страницу изменения пароля, щелкая по кнопке из меню в хедаре.'):
+            link = self.browser.find_element(*HeaderMenuButtons.CHANGE_PASSWORD)
+            link.click()
 
     def go_to_exit(self):
         '''Функция выхода из уч.записи из меню в хедаре'''
-        link = self.browser.find_element(*HeaderMenuButtons.EXIT)
-        link.click()
+        with allure.step('Выходим из своей учетной записи, щелкая по кнопке из меню в хедаре.'):
+            link = self.browser.find_element(*HeaderMenuButtons.EXIT)
+            link.click()
 
     def go_to_login_page(self):
         '''Функция осуществляет переход на страницу входа'''
-        link = self.browser.find_element(*LogRegLocators.LOGIN_LINK)
-        link.click()
+        with allure.step('Переходим на страницу входа в учетную запись, щелкая по кнопке из меню в хедаре.'):
+            link = self.browser.find_element(*LogRegLocators.LOGIN_LINK)
+            link.click()
     
     def go_to_registration_page(self):
         '''Функция осуществляет переход на страницу регистрации'''
-        link = self.browser.find_element(*LogRegLocators.REGISTRATION_LINK)
-        link.click()
+        with allure.step('Переходим на страницу регистрации, щелкая по кнопке из меню в хедаре.'):
+            link = self.browser.find_element(*LogRegLocators.REGISTRATION_LINK)
+            link.click()
 
     def is_element_present(self, how, what):
         '''Проверка наличия элемента на странице'''
