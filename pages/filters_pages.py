@@ -10,7 +10,7 @@ class FiltersPage(BasePage):
     def tags_filter(self, tag_filter):
         '''Функция фильтрации по тегу'''
         tag_name = self.browser.find_elements(*CreateRecipeLocators.TAG_NAME)
-        with allure.step('Последовательно нажимем на каждый тег.'):
+        with allure.step('Последовательно нажмем на каждый тег.'):
             for tag in tag_name:
                 if tag.text == tag_filter:
                     tag_button_locator = (By.XPATH, f'//span[text()="{tag_filter}"]/../button')

@@ -3,12 +3,15 @@ from pages.subscriptions_page import SubscriptionsPage
 from pages.links import main_page_link
 from data.data_registration import DataRegistrationAndLoginUser_2
 import pytest
+import allure
+from allure_commons.types import AttachmentType
 
 
 @pytest.mark.run(order=4)
 @pytest.mark.subscribe_test(scope='class')
+@allure.feature('Тесты подписки на автора рецептов.')
 class TestSubscription():
-    
+
     @pytest.mark.subscription_test
     def test_subscription(self, browser):
         page = LoginPage(browser, main_page_link)

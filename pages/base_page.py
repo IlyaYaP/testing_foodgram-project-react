@@ -16,7 +16,7 @@ class BasePage():
 
     def open(self):
         '''Функция перехода к указанному адресу.'''
-        with allure.step('Открываем страницу'):
+        with allure.step('Открываем главную страницу'):
             self.browser.get(self.url)
 
     def go_to_recipes_page(self):
@@ -81,7 +81,6 @@ class BasePage():
     def is_element_present(self, how, what):
         '''Проверка наличия элемента на странице'''
         try:
-            
             self.browser.find_element(how, what)
         except(NoSuchElementException):
             return False
@@ -90,7 +89,6 @@ class BasePage():
     def is_element_present_timeout(self, how, what):
         '''Проверка наличия элемента на странице, ожидая'''
         try:
-            
             WebDriverWait(self.browser, timeout=1).until(EC.presence_of_element_located((how, what)))
             self.browser.find_element(how, what)
         except(TimeoutException):
@@ -115,22 +113,25 @@ class BasePage():
     
     def is_alert_present(self, timeout=1):
         '''Проверка наличия элемента(алерта) на странице, если есть алерт то тест пройдет'''
-        try:
-            WebDriverWait(self.browser, timeout).until(EC.alert_is_present(), 'Timed out waiting')
-            self.browser.switch_to.alert.accept()
-        except TimeoutException:
-            return False
-        return True
+        with allure.step('Проверяем, что алерт с сообщением об ошибке появился.'):
+            try:
+                WebDriverWait(self.browser, timeout).until(EC.alert_is_present(), 'Timed out waiting')
+                self.browser.switch_to.alert.accept()
+            except TimeoutException:
+                return False
+            return True
 
     def alert_handler(self):
-        '''Функция передает текст алерта в сообщение об ошибке'''
-        assert self.is_not_alert_present(), f'{self.browser.switch_to.alert.text}'
+        '''Функция проверяет, что алерт не появился'''
+        with allure.step('Проверяем, что алерт с сообщением об ошибке  не появился.'):
+            assert self.is_not_alert_present(), f'{self.browser.switch_to.alert.text}'
 
     def add_image(self, image_name, element):
         '''Функция добавления фотографии'''
-        directory = 'C:/dev/testing_foodgram-project-react/pages/recipe_image/'
-        file_path = os.path.join(directory, image_name)
-        element.send_keys(file_path)
+        with allure.step('Добавляем фото рецепта.'):
+            directory = 'C:/dev/testing_foodgram-project-react/pages/recipe_image/'
+            file_path = os.path.join(directory, image_name)
+            element.send_keys(file_path)
 
     def is_disappeared(self, how, what, timeout=2):
         '''Функция ожидает, пока элемент не исчезнет'''

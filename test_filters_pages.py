@@ -18,7 +18,6 @@ class TestFiltersTags():
     @allure.story('Тест фильтрации по тегу на главной странице.')
     @pytest.mark.parametrize('data', ['Завтрак', 'Обед', 'Ужин'])
     def test_filter_tags_recipes_page(self, browser, data):
-        '''Тест фильтрации по тегу на странице рецептов'''
         page = FiltersPage(browser, main_page_link)
         page.open()
         page.tags_filter(data)

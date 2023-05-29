@@ -16,10 +16,9 @@ class TestFavourites():
     @allure.story('Тест добавления рецептов в избранное')
     @pytest.mark.parametrize('data', DataFavouries.RECIPE_NAME)
     def test_favourites(self, browser, data):
-        with allure.step('Открываем главную страницу и логинимся.'):
-            page = LoginPage(browser, main_page_link)
-            page.open()
-            page.login_user(DataRegistrationAndLoginUser_2.valid_data_login)
+        page = LoginPage(browser, main_page_link)
+        page.open()
+        page.login_user(DataRegistrationAndLoginUser_2.valid_data_login)
         with allure.step('Добавляем рецепт в избранное.'):
             page_favourites = FavouritesPage(browser, browser.current_url)
             page_favourites.add_favorites(data)
