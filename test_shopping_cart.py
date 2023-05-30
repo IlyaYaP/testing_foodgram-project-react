@@ -4,14 +4,17 @@ from pages.links import main_page_link
 from data.data_registration import DataRegistrationAndLoginUser_2
 from data.data_shopping_cart import DataShoppingCart
 import pytest
-
+import allure
+from allure_commons.types import AttachmentType
 
 @pytest.mark.run(order=7)
 @pytest.mark.shopping_cart_test(scope='class')
+@allure.feature('Тесты добавления рецептов в список покупок.')
 class TestShoppingCart():
     
-    @pytest.mark.subscription_test
+    @pytest.mark.shopping_cart_test
     @pytest.mark.parametrize('data', DataShoppingCart.RECIPE_NAME)
+    @allure.story('Тест добавления рецептов в список покупок.')
     def test_shopping_cart(self, browser, data):
         page = LoginPage(browser, main_page_link)
         page.open()

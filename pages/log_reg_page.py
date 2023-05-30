@@ -78,7 +78,7 @@ class LoginPage(BasePage):
 
     def not_should_be_create_recipe_button(self):
         '''Проверка отсутствия кнопки "создать рецепт'''
-        with allure.step('Проверяем, что после ввода невалидных данных, нас не перенаправили на страницу аутентификации.'):
+        with allure.step('Проверяем, что после ввода невалидных данных, нас не перенаправили на страницу c рецептами.'):
             allure.attach(self.browser.get_screenshot_as_png(), name='Screenshot', attachment_type=AttachmentType.PNG)
             assert self.is_not_element_present(*LogRegLocators.BUTTON_CREATE_RECIPE), 'The recipe creation button is presented'
 

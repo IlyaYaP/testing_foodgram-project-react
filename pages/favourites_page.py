@@ -15,17 +15,20 @@ class FavouritesPage(BasePage):
     
     def add_favorites(self, data):
         '''Функция добавления рецептов в избранное'''
-        favourites_button_locator = (By.XPATH, f'//a[text()="{data}"]//following::button[2]')
-        favourites_button = self.browser.find_element(*favourites_button_locator)
-        favourites_button.click()
-        self.go_to_favorites_page()
+        with allure.step('Добавляем рецепт в избранное.'):
+            favourites_button_locator = (By.XPATH, f'//a[text()="{data}"]//following::button[2]')
+            favourites_button = self.browser.find_element(*favourites_button_locator)
+            favourites_button.click()
+            self.go_to_favorites_page()
 
     def delete_favotites(self, data):
-        self.go_to_favorites_page()
-        favourites_button_locator = (By.XPATH, f'//a[text()="{data}"]//following::button[2]')
-        favourites_button = self.browser.find_element(*favourites_button_locator)
-        favourites_button.click()
-        self.browser.refresh()
+        '''Функция удаления рецептов в избранное'''
+        with allure.step('Удаляем рецепт из избранного.'):
+            self.go_to_favorites_page()
+            favourites_button_locator = (By.XPATH, f'//a[text()="{data}"]//following::button[2]')
+            favourites_button = self.browser.find_element(*favourites_button_locator)
+            favourites_button.click()
+            self.browser.refresh()
 
     def should_be_favorites(self, data):
         '''Функция проверки, что рецепт появился в избранном'''

@@ -5,11 +5,14 @@ from pages.locators import CreateRecipeLocators
 from data.data_recipe_create import DataRecipeCreateBreakfast, DataRecipeCreateDinner, DataRecipeCreateLunch
 from data.data_registration import DataRegistrationAndLoginUser_1
 import pytest
+import allure
+from allure_commons.types import AttachmentType
 
+@allure.feature('Тесты создания рецепта.')
 @pytest.mark.run(order=3)
 @pytest.mark.recipe_create_test(scope='function')
 class TestRecipeCreate():
-    
+    @allure.story('Тест создания рецепта.')
     @pytest.mark.recipe_create
     @pytest.mark.parametrize('recipe_name_data, \
                              cooking_time_data, \
@@ -29,7 +32,6 @@ class TestRecipeCreate():
                            meal_data, 
                            ingredients_data, 
                            image_name_data):
-        '''Тест создания рецепта'''
         page = LoginPage(browser, main_page_link)
         page.open()
         page.login_user(DataRegistrationAndLoginUser_1.valid_data_login)

@@ -19,20 +19,17 @@ class TestFavourites():
         page = LoginPage(browser, main_page_link)
         page.open()
         page.login_user(DataRegistrationAndLoginUser_2.valid_data_login)
-        with allure.step('Добавляем рецепт в избранное.'):
-            page_favourites = FavouritesPage(browser, browser.current_url)
-            page_favourites.add_favorites(data)
-            page_favourites.should_be_favorites(data)
+        page_favourites = FavouritesPage(browser, browser.current_url)
+        page_favourites.add_favorites(data)
+        page_favourites.should_be_favorites(data)
 
 
     @allure.story('Тест удаления рецептов из избранного')
     @pytest.mark.parametrize('data', DataFavouries.RECIPE_NAME)
     def test_delete_favourites(self, browser, data):
-        with allure.step('Открываем главную страницу и логинимся.'):
-            page = LoginPage(browser, main_page_link)
-            page.open()
-            page.login_user(DataRegistrationAndLoginUser_2.valid_data_login)
-        with allure.step('Удаляем рецепт из избранного.'):
-            page_favourites = FavouritesPage(browser, browser.current_url)
-            page_favourites.delete_favotites(data)
-            page_favourites.not_should_be_favorites(data)
+        page = LoginPage(browser, main_page_link)
+        page.open()
+        page.login_user(DataRegistrationAndLoginUser_2.valid_data_login)
+        page_favourites = FavouritesPage(browser, browser.current_url)
+        page_favourites.delete_favotites(data)
+        page_favourites.not_should_be_favorites(data)
