@@ -1,11 +1,12 @@
-from pages.log_reg_page import LoginPage
-from pages.shopping_cart_page import ShoppingCart
-from pages.links import main_page_link
+import allure
+import pytest
+
 from data.data_registration import DataRegistrationAndLoginUser_2
 from data.data_shopping_cart import DataShoppingCart
-import pytest
-import allure
-from allure_commons.types import AttachmentType
+from pages.links import main_page_link
+from pages.log_reg_page import LoginPage
+from pages.shopping_cart_page import ShoppingCart
+
 
 @pytest.mark.run(order=7)
 @pytest.mark.shopping_cart_test(scope='class')

@@ -1,9 +1,8 @@
 from selenium.webdriver.common.by import By
-from data.data_subscription import DataSubscription
+
 from data.data_favourites import DataFavouries
 from data.data_shopping_cart import DataShoppingCart
-
-
+from data.data_subscription import DataSubscription
 
 
 class LogRegLocators():

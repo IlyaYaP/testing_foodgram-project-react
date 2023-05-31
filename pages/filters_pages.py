@@ -1,8 +1,9 @@
-from .base_page import BasePage
-from .locators import CreateRecipeLocators
-from selenium.webdriver.common.by import By
 import allure
 from allure_commons.types import AttachmentType
+from selenium.webdriver.common.by import By
+
+from .base_page import BasePage
+from .locators import CreateRecipeLocators
 
 
 class FiltersPage(BasePage):

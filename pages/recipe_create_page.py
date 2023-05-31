@@ -1,11 +1,13 @@
-from .base_page import BasePage
-from .locators import CreateRecipeLocators
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.common.exceptions import StaleElementReferenceException
 import allure
 from allure_commons.types import AttachmentType
+from selenium.common.exceptions import StaleElementReferenceException
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import WebDriverWait
+
+from .base_page import BasePage
+from .locators import CreateRecipeLocators
+
 
 class RecipeCreation(BasePage):
     

@@ -1,11 +1,12 @@
-from .base_page import BasePage
-from .locators import SubscriptionsLocators
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.common.exceptions import TimeoutException
-from selenium.common.exceptions import NoSuchElementException
 import allure
 from allure_commons.types import AttachmentType
+from selenium.common.exceptions import NoSuchElementException, TimeoutException
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import WebDriverWait
+
+from .base_page import BasePage
+from .locators import SubscriptionsLocators
+
 
 class SubscriptionsPage(BasePage):
     def subscription(self):

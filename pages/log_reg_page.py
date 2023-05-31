@@ -1,9 +1,12 @@
 
-from .base_page import BasePage
-from .locators import LogRegLocators
-from data.data_registration import DataRegistrationAndLoginUser_1
 import allure
 from allure_commons.types import AttachmentType
+
+from data.data_registration import DataRegistrationAndLoginUser_1
+
+from .base_page import BasePage
+from .locators import LogRegLocators
+
 
 class LoginPage(BasePage):
     
@@ -81,7 +84,6 @@ class LoginPage(BasePage):
         with allure.step('Проверяем, что после ввода невалидных данных, нас не перенаправили на страницу c рецептами.'):
             allure.attach(self.browser.get_screenshot_as_png(), name='Screenshot', attachment_type=AttachmentType.PNG)
             assert self.is_not_element_present(*LogRegLocators.BUTTON_CREATE_RECIPE), 'The recipe creation button is presented'
-
 
 
 

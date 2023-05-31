@@ -1,12 +1,11 @@
-from pages.log_reg_page import LoginPage
-from data.data_registration import DataRegistrationAndLoginUser_2
+import allure
+import pytest
+
 from data.data_favourites import DataFavouries
+from data.data_registration import DataRegistrationAndLoginUser_2
 from pages.favourites_page import FavouritesPage
 from pages.links import main_page_link
-import pytest
-import time
-import allure
-from allure_commons.types import AttachmentType
+from pages.log_reg_page import LoginPage
 
 
 @pytest.mark.run(order=5)

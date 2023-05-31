@@ -1,11 +1,11 @@
 import os
-from selenium.common.exceptions import NoSuchElementException
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.common.exceptions import TimeoutException
-from selenium.webdriver.support.ui import WebDriverWait
-from .locators import LogRegLocators,  HeaderMenuButtons
+
 import allure
-from allure_commons.types import AttachmentType
+from selenium.common.exceptions import NoSuchElementException, TimeoutException
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import WebDriverWait
+
+from .locators import HeaderMenuButtons, LogRegLocators
 
 
 class BasePage():

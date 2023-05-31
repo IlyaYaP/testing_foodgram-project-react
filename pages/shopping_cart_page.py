@@ -1,14 +1,14 @@
-from .base_page import BasePage
-from .locators import ShoppingCartLocators
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.common.exceptions import TimeoutException
-from selenium.common.exceptions import NoSuchElementException
-from selenium.webdriver.common.by import By
-from data.data_shopping_cart import DataShoppingCart
 import time
+
 import allure
 from allure_commons.types import AttachmentType
+from selenium.webdriver.common.by import By
+
+from data.data_shopping_cart import DataShoppingCart
+
+from .base_page import BasePage
+from .locators import ShoppingCartLocators
+
 
 class ShoppingCart(BasePage):
 

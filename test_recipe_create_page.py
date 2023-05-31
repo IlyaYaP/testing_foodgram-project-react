@@ -1,12 +1,14 @@
-from pages.recipe_create_page import RecipeCreation
-from pages.log_reg_page import LoginPage
-from pages.links import main_page_link
-from pages.locators import CreateRecipeLocators
-from data.data_recipe_create import DataRecipeCreateBreakfast, DataRecipeCreateDinner, DataRecipeCreateLunch
-from data.data_registration import DataRegistrationAndLoginUser_1
-import pytest
 import allure
-from allure_commons.types import AttachmentType
+import pytest
+
+from data.data_recipe_create import (DataRecipeCreateBreakfast,
+                                     DataRecipeCreateDinner,
+                                     DataRecipeCreateLunch)
+from data.data_registration import DataRegistrationAndLoginUser_1
+from pages.links import main_page_link
+from pages.log_reg_page import LoginPage
+from pages.recipe_create_page import RecipeCreation
+
 
 @allure.feature('Тесты создания рецепта.')
 @pytest.mark.run(order=3)
