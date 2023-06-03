@@ -25,7 +25,7 @@ pip install -r requirements.txt
 ```
 - Укажите корректный путь для тестовых данных в base_page.py Ln 152.
 
-- Запускаем тесты:
+- Запускаем тесты (Chrome):
 ```
 pytest -s -v --alluredir result_allure --tb=long
 ```
