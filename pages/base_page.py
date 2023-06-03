@@ -147,7 +147,9 @@ class BasePage():
     def add_image(self, image_name, element):
         '''Функция добавления фотографии'''
         with allure.step('Добавляем фото рецепта.'):
-            directory = f'C:/dev/testing_foodgram-project-react/pages/recipe_image/'
+            # Укажите корректный путь до файлов тестовых данных
+            # 'your directory/testing_foodgram_project_react/pages/recipe_image/'
+            directory = 'C:/dev/testing_foodgram_project_react/pages/recipe_image/'
             file_path = os.path.join(directory, image_name)
             element.send_keys(file_path)
 

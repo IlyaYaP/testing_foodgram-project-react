@@ -23,8 +23,19 @@ source venv/scripts/activate
 python -m pip install --upgrade pip
 pip install -r requirements.txt
 ```
+- Укажите корректный путь для тестовых данных в base_page.py Ln 152.
 
 - Запускаем тесты:
 ```
-pytest --alluredir result_allure -s -v --tb=long
+pytest -s -v --alluredir result_allure --tb=long
+```
+
+- Установка allure на Windows.
+```
+scoop install allure 
+```
+
+- Формируем отчет allure.
+```
+allure serve result_allure
 ```
