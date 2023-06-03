@@ -7,7 +7,7 @@
 # Развертывание проекта
 - Развертываем проект [Foodgram(YandexPracticum)](https://github.com/IlyaYaP/foodgram-project-react) в соответствии с инструкцией.
 
-- После успешного запуска проекта Foodgram, клонируем данный репозиторий с проектом:
+- После успешного запуска проекта Foodgram клонируем данный репозиторий с проектом:
 ```
 git clone https://github.com/IlyaYaP/testing_foodgram_project_react.git
 ```
@@ -39,4 +39,4 @@ scoop install allure
 ```
 allure serve result_allure
 ```
-- Наслаждаемся красивым отчетом, где можно, детально разобрать все тест-кейсы.
+- Наслаждаемся красивым отчетом, где можно детально разобрать все тест-кейсы.
