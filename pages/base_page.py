@@ -130,8 +130,8 @@ class BasePage():
         with allure.step('Проверяем, что алерт с\
                          сообщением об ошибке появился.'):
             try:
-                WebDriverWait(self.browser, timeout).until
-                (EC.alert_is_present(), 'Timed out waiting')
+                WebDriverWait(self.browser, timeout).until(
+                    EC.alert_is_present(), 'Timed out waiting')
                 self.browser.switch_to.alert.accept()
             except TimeoutException:
                 return False
@@ -141,14 +141,13 @@ class BasePage():
         '''Функция проверяет, что алерт не появился'''
         with allure.step('Проверяем, что алерт с сообщением\
                          об ошибке  не появился.'):
-            assert self.is_not_alert_present(), f'{
-                   self.browser.switch_to.alert.text}'
+            assert self.is_not_alert_present(), f'\
+                {self.browser.switch_to.alert.text}'
 
     def add_image(self, image_name, element):
         '''Функция добавления фотографии'''
         with allure.step('Добавляем фото рецепта.'):
-            directory = f'C:/dev/testing_foodgram-project-react/\
-                          pages/recipe_image/'
+            directory = f'C:/dev/testing_foodgram-project-react/pages/recipe_image/'
             file_path = os.path.join(directory, image_name)
             element.send_keys(file_path)
 
