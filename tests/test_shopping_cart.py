@@ -12,7 +12,6 @@ from pages.shopping_cart_page import ShoppingCart
 @pytest.mark.shopping_cart_test(scope='class')
 @allure.feature('Тесты добавления рецептов в список покупок.')
 class TestShoppingCart():
-    
     @pytest.mark.shopping_cart_test
     @pytest.mark.parametrize('data', DataShoppingCart.RECIPE_NAME)
     @allure.story('Тест добавления рецептов в список покупок.')

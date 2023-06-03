@@ -22,7 +22,6 @@ class TestFavourites():
         page_favourites.add_favorites(data)
         page_favourites.should_be_favorites(data)
 
-
     @allure.story('Тест удаления рецептов из избранного')
     @pytest.mark.parametrize('data', DataFavouries.RECIPE_NAME)
     def test_delete_favourites(self, browser, data):

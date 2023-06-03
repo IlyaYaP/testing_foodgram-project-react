@@ -14,7 +14,8 @@ class FiltersPage(BasePage):
         with allure.step('Последовательно нажмем на каждый тег.'):
             for tag in tag_name:
                 if tag.text == tag_filter:
-                    tag_button_locator = (By.XPATH, f'//span[text()="{tag_filter}"]/../button')
+                    tag_button_locator = (By.XPATH, f'//span[text()=\
+                                          "{tag_filter}"]/../button')
                     tag_button = self.browser.find_element(*tag_button_locator)
                     tag_button.click()
                     self.should_be_recipes_tags(tag_filter)
@@ -23,9 +24,13 @@ class FiltersPage(BasePage):
 
     def should_be_recipes_tags(self, tag_filter):
         '''Проверка работы фильтров'''
-        with allure.step('Проверяем, что рецепты соответствуют выбранному тегу.'):
-            allure.attach(self.browser.get_screenshot_as_png(), name='Screenshot', attachment_type=AttachmentType.PNG)
-            tag_name = self.browser.find_elements(*CreateRecipeLocators.TAG_NAME)
+        with allure.step('Проверяем, что рецепты\
+                         соответствуют выбранному тегу.'):
+            allure.attach(self.browser.get_screenshot_as_png(),
+                          name='Screenshot',
+                          attachment_type=AttachmentType.PNG)
+            tag_name = self.browser.find_elements(
+                       *CreateRecipeLocators.TAG_NAME)
             for tag in tag_name:
                 if tag.text != tag_filter:
                     assert '-----Tag filtering doesnt work!'

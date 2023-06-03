@@ -5,12 +5,13 @@ from webdriver_manager.chrome import ChromeDriverManager
 
 
 def pytest_addoption(parser):
-    parser.addoption('--browser_name', action = 'store',
-                     default = 'chrome', help = 'Choose browser: chrome or')
-    parser.addoption('--language', action= 'store',
-                     default = 'en', help = 'Choose lang')
+    parser.addoption('--browser_name', action='store',
+                     default='chrome', help='Choose browser: chrome or')
+    parser.addoption('--language', action='store',
+                     default='en', help='Choose lang')
 
-@pytest.fixture(scope = 'function')
+
+@pytest.fixture(scope='function')
 def browser(request):
     browser_name = request.config.getoption('browser_name')
     user_language = request.config.getoption('language')
@@ -18,10 +19,13 @@ def browser(request):
     if browser_name == 'chrome':
         print('\nstart chrome browser for test..')
         option_chrome = webdriver.ChromeOptions()
-        option_chrome.add_experimental_option('excludeSwitches', ['enable-logging'])
-        option_chrome.add_experimental_option('prefs', 
-                                               {'intl.accept_languages': user_language})
-        browser = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=option_chrome)
+        option_chrome.add_experimental_option(
+            'excludeSwitches', ['enable-logging'])
+        option_chrome.add_experimental_option(
+            'prefs', {'intl.accept_languages': user_language})
+        browser = webdriver.Chrome(
+            service=Service(ChromeDriverManager().install()),
+            options=option_chrome)
     elif browser_name == 'firefox':
         print('\nstart firefox browser for test..')
         option_firefox = webdriver.FirefoxOptions()
@@ -34,6 +38,5 @@ def browser(request):
     print("\nquit browser..")
     browser.quit()
 
+
 def pytest_make_parametrize_id(config, val): return repr(val)
-
-
