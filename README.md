@@ -39,3 +39,4 @@ scoop install allure
 ```
 allure serve result_allure
 ```
+- Наслаждаемся красивым отчетом, где можно, детально разобрать все тест-кейсы.
